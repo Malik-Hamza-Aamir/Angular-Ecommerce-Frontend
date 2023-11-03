@@ -1,0 +1,5 @@
+<div class="flex flex-row flex-wrap mt-[4rem]">
+  <div *ngFor="let product of products">
+    <app-product-card [products]="product" [updateProduct]="updateProduct" ></app-product-card>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="todo_container">
+    <div class="form_container">
+        <form (submit)="addOrUpdateTodo()">
+            <input type="text" placeholder="Add or Update a Todo Here..." [(ngModel)]="inputTodo" name="todo">
+            <button type="submit">{{ selectedTodoId === -1 ? 'Add Todo' : 'Update Todo' }}</button>
+        </form>
+    </div>
+
+    <div>
+        <div class="todo" *ngFor="let todo of todos">
+            <p>{{ todo.id }}</p>
+            <p>{{ todo.content }}</p>
+            <button (click)="toggleUpdate(todo.id)">Update</button>
+            <button (click)="toggleDelete(todo.id)">Remove</button>
+        </div>
+    </div>
+</div>

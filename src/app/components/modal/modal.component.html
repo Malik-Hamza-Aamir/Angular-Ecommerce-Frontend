@@ -1,0 +1,80 @@
+<div class="p-4 bg-white shadow-lg rounded-md">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-semibold">Product Details</h1>
+    <button
+      *ngIf="!clicked"
+      class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+      (click)="showEdit()"
+    >
+      Edit
+    </button>
+  </div>
+
+  <div *ngIf="!clicked" class="mt-4">
+    <ul>
+      <li class="mb-2">
+        <span class="font-semibold">Name:</span> {{ product.title }}
+      </li>
+      <li class="mb-2">
+        <span class="font-semibold">Brand:</span> {{ product.brand }}
+      </li>
+      <li class="mb-2">
+        <span class="font-semibold">Description:</span> {{ product.description }}
+      </li>
+      <li class="mb-2">
+        <span class="font-semibold">Price:</span> {{ product.price }}
+      </li>
+      <li class="mb-2">
+        <span class="font-semibold">Rating:</span> {{ product.rating }}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="clicked" class="mt-4">
+    <form (submit)="handleSubmit($event)" class="flex flex-col w-[30rem]">
+      <input
+        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
+        type="text"
+        name="title"
+        [(ngModel)]="inputTitle"
+        placeholder="Title Here..."
+      />
+      <input
+        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
+        type="text"
+        name="brand"
+        [(ngModel)]="inputBrand"
+        placeholder="Brand Here..."
+      />
+      <textarea
+        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
+        cols="4"
+        rows="5"
+        name="description"
+        [(ngModel)]="inputDescription"
+        placeholder="Description Here..."
+      ></textarea>
+      <input
+        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
+        type="number"
+        name="price"
+        [(ngModel)]="inputPrice"
+        placeholder="Price Here..."
+      />
+      <input
+        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
+        type="number"
+        name="rating"
+        [(ngModel)]="inputRating"
+        placeholder="Rating Here..."
+      />
+
+      <button
+        type="submit"
+        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>
