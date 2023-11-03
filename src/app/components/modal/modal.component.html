@@ -1,4 +1,4 @@
-<div class="p-4 bg-white shadow-lg rounded-md">
+<div class="p-4 bg-white shadow-lg rounded-md  min-w-[45rem]">
   <div class="flex items-center justify-between">
     <h1 class="text-2xl font-semibold">Product Details</h1>
     <button
@@ -10,71 +10,73 @@
     </button>
   </div>
 
-  <div *ngIf="!clicked" class="mt-4">
-    <ul>
-      <li class="mb-2">
-        <span class="font-semibold">Name:</span> {{ product.title }}
-      </li>
-      <li class="mb-2">
-        <span class="font-semibold">Brand:</span> {{ product.brand }}
-      </li>
-      <li class="mb-2">
-        <span class="font-semibold">Description:</span> {{ product.description }}
-      </li>
-      <li class="mb-2">
-        <span class="font-semibold">Price:</span> {{ product.price }}
-      </li>
-      <li class="mb-2">
-        <span class="font-semibold">Rating:</span> {{ product.rating }}
-      </li>
-    </ul>
-  </div>
+  <!-- border-2 border-solid border-red-700 -->
+  <div class="mt-4">
+    <div>
+      <form (submit)="handleSubmit($event)">
+        <div class="flex flex-row align-middle">
+          Name: <span class="ml-1" *ngIf="!clicked">{{ product.title }}</span>
+          <input
+            *ngIf="clicked"
+            type="text"
+            class="border-2 mb-2 border-gray-500 rounded-md ml-1 w-full px-1 focus:outline-none focus:border-blue-500"
+            name="title"
+            [(ngModel)]="inputTitle"
+          />
+        </div>
 
-  <div *ngIf="clicked" class="mt-4">
-    <form (submit)="handleSubmit($event)" class="flex flex-col w-[30rem]">
-      <input
-        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
-        type="text"
-        name="title"
-        [(ngModel)]="inputTitle"
-        placeholder="Title Here..."
-      />
-      <input
-        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
-        type="text"
-        name="brand"
-        [(ngModel)]="inputBrand"
-        placeholder="Brand Here..."
-      />
-      <textarea
-        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
-        cols="4"
-        rows="5"
-        name="description"
-        [(ngModel)]="inputDescription"
-        placeholder="Description Here..."
-      ></textarea>
-      <input
-        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
-        type="number"
-        name="price"
-        [(ngModel)]="inputPrice"
-        placeholder="Price Here..."
-      />
-      <input
-        class="border-2 border-gray-500 rounded-md w-full px-3 py-2 mb-4 focus:outline-none focus:border-blue-500"
-        type="number"
-        name="rating"
-        [(ngModel)]="inputRating"
-        placeholder="Rating Here..."
-      />
+        <div class="flex flex-row align-middle">
+          Brand: <span class="ml-1" *ngIf="!clicked">{{ product.brand }}</span>
+          <input
+            *ngIf="clicked"
+            type="text"
+            class="border-2 mb-2 border-gray-500 rounded-md ml-1 w-full px-1 focus:outline-none focus:border-blue-500"
+            name="brand"
+            [(ngModel)]="inputBrand"
+          />
+        </div>
 
-      <button
-        type="submit"
-        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-      >
-        Update
-      </button>
-    </form>
+        <div class="flex flex-row align-middle">
+          Description: <span class="ml-1" *ngIf="!clicked">{{ product.description }}</span>
+          <input
+            *ngIf="clicked"
+            type="text"
+            class="border-2 mb-2 border-gray-500 rounded-md ml-1 w-full px-1 focus:outline-none focus:border-blue-500"
+            name="description"
+            [(ngModel)]="inputDescription"
+          />
+        </div>
+
+        <div class="flex flex-row align-middle">
+          Price: <span class="ml-1" *ngIf="!clicked">{{ product.price }}</span>
+          <input
+            *ngIf="clicked"
+            type="text"
+            class="border-2 mb-2 border-gray-500 rounded-md ml-1 w-full px-1 focus:outline-none focus:border-blue-500"
+            name="price"
+            [(ngModel)]="inputPrice"
+          />
+        </div>
+
+        <div class="flex flex-row align-middle">
+          Rating: <span class="ml-1" *ngIf="!clicked">{{ product.rating }}</span>
+          <input
+            *ngIf="clicked"
+            type="text"
+            class="border-2 mb-2 border-gray-500 rounded-md ml-1 w-full px-1 focus:outline-none focus:border-blue-500"
+            name="rating"
+            [(ngModel)]="inputRating"
+          />
+        </div>
+
+        <button
+          *ngIf="clicked"
+          type="submit"
+          class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        >
+          Update
+        </button>
+      </form>
+    </div>
   </div>
 </div>
